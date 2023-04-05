@@ -33,7 +33,7 @@ public class CameraMover : MonoBehaviour
             camLocation.transform.position = leftRoom.transform.position;
         }
 
-        if (collision.gameObject.tag == "Player" && this.gameObject.name == "ExitDoor")
+        if (collision.gameObject.tag == "Player" && this.gameObject.tag == "ExitDoor")
         {
             Cam.orthographicSize = 25f;
             camLocation.transform.position = mainRoom.transform.position;
@@ -41,7 +41,7 @@ public class CameraMover : MonoBehaviour
 
         if (collision.gameObject.tag == "Player" && this.gameObject.name == "TopEnterDoor")
         {
-            Cam.orthographicSize = 19f;
+            Cam.orthographicSize = 25f;
             camLocation.transform.position = topRoom.transform.position;
         }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 10f;
+    public float speed = 10f;
     private float jumpingPower = 20f;
     private bool isFacingRight = true;
     public bool PlayerCode = true;
@@ -37,12 +37,37 @@ public class PlayerController : MonoBehaviour
     public GameObject levelTwoSteps;
     public GameObject levelTwoDoor;
 
+    private float timeWithBuff;
+    public float buffTimeLimit;
+    public GameObject wiring;
+    private bool hasBuff = false;
+
+    public GameObject sightTrigger;
+    public SpriteRenderer firstColor;
+    public GameObject FirstConnect;
+    private bool firstConnected = false;
+    public SpriteRenderer secondColor;
+    public GameObject SecondConnect;
+    private bool secondConnected = false;
+    public SpriteRenderer thirdColor;
+    public GameObject ThirdConnect;
+    private bool thirdConnected = false;
+    public SpriteRenderer fourthColor;
+    public GameObject fourthConnect;
+    private bool fourthConnected = false;
+    public SpriteRenderer endColor;
+    public GameObject EndConnect;
+
+    public bool secondPuzzleSolved;
+
     void Start()
     {
         correctOrder = false;
         firstPuzzleComplete = false;
         levelTwoDoor.SetActive(true);
         levelTwoSteps.SetActive(false);
+        secondPuzzleSolved = false;
+        wiring.SetActive(false);
     }
 
     void Update()
@@ -81,6 +106,19 @@ public class PlayerController : MonoBehaviour
             levelTwoDoor.SetActive(false);
             levelTwoSteps.SetActive(true);
         }
+
+        if (hasBuff == true)
+        {
+            timeWithBuff += Time.deltaTime;
+            wiring.SetActive(true);
+        }
+
+        if (timeWithBuff >= buffTimeLimit)
+        {
+            timeWithBuff = 0f;
+            hasBuff = false;
+            wiring.SetActive(false);
+        }
     }
 
     private void fixedUpdate()
@@ -118,6 +156,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        FirstPuzzle(collision);
+
+        SecondPuzzle(collision);
+    }
+
+    public void FirstPuzzle(Collider2D collision)
+    {
         if (collision.gameObject == firstPlate && Input.GetKeyDown(KeyCode.B))
         {
             correctOrder = true;
@@ -132,7 +177,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject == secondPlate && plateOneTouched == false && Input.GetKeyDown(KeyCode.B))
         {
-            plateOneTouched = false;
             correctOrder = false;
         }
 
@@ -145,6 +189,65 @@ public class PlayerController : MonoBehaviour
         {
             plateOneTouched = false;
             correctOrder = false;
+        }
+    }
+
+    public void SecondPuzzle(Collider2D collision)
+    {
+        if (collision.gameObject == sightTrigger && Input.GetKeyDown(KeyCode.B))
+        {
+            hasBuff = true;
+        }
+
+        if (collision.gameObject == FirstConnect && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            firstColor.color = Color.green;
+            firstConnected = true;
+        }
+
+        if (collision.gameObject == SecondConnect && firstConnected == true && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            secondColor.color = Color.green;
+            secondConnected = true;
+        }
+
+        if (collision.gameObject == ThirdConnect && secondConnected == true && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            thirdColor.color = Color.green;
+            thirdConnected = true;
+        }
+        else if (collision.gameObject == ThirdConnect && secondConnected == false && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            firstConnected = false;
+            firstColor.color = Color.red;
+        }
+
+        if (collision.gameObject == fourthConnect && thirdConnected == true && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            fourthColor.color = Color.green;
+            fourthConnected = true;
+        }
+        else if (collision.gameObject == fourthConnect && thirdConnected == false && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            firstConnected = false;
+            firstColor.color = Color.red;
+            secondConnected = false;
+            secondColor.color = Color.red;
+        }
+
+        if (collision.gameObject == EndConnect && fourthConnected == true && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            endColor.color = Color.green;
+            secondPuzzleSolved = true;
+        }
+        else if (collision.gameObject == EndConnect && fourthConnected == false && Input.GetKeyDown(KeyCode.B) && hasBuff)
+        {
+            firstConnected = false;
+            firstColor.color = Color.red;
+            secondConnected = false;
+            secondColor.color = Color.red;
+            thirdConnected = false;
+            thirdColor.color = Color.red;
         }
     }
 }
