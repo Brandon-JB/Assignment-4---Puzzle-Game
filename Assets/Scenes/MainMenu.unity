@@ -289,6 +289,7 @@ RectTransform:
   - {fileID: 169901138}
   - {fileID: 1446378687}
   - {fileID: 1940043738}
+  - {fileID: 1968380550}
   m_Father: {fileID: 518187586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -410,7 +411,6 @@ RectTransform:
   - {fileID: 1847212546}
   - {fileID: 2055585405}
   - {fileID: 638662783}
-  - {fileID: 1968380550}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -460,15 +460,18 @@ MonoBehaviour:
   m_text: 'Programming: All of the programming was made by me.
 
 
-    Music:
+    Music: All tracks
+    found on incompetech.com Tracks used are "Celebration", "Quirky Dog", "The Entertainer",
+    and "Tiki Bar Mixer".
 
 
-    Sound:
+    Sound: All sounds were found using free sound.
 
 
     Visuals:
-    All Art except for the secret was made by me. I have no idea where that came
-    from, it''s been on my phone for years.'
+    All Art except for the secret and victory picture were made by me. I have no
+    idea where that came from, it''s been on my phone for years. The victory picture
+    was found on pngegg.com'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -562,7 +565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.594, y: 0}
+  m_AnchoredPosition: {x: -0.594, y: 154}
   m_SizeDelta: {x: 1440.812, y: 542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &726057447
@@ -1779,7 +1782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -721, y: -323}
+  m_AnchoredPosition: {x: -721, y: -433}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1877731782
@@ -2086,17 +2089,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968380549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 518187586}
+  m_Father: {fileID: 230749209}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.59398, y: 166}
+  m_AnchoredPosition: {x: -0.59398, y: 288}
   m_SizeDelta: {x: 807.44, y: 489.268}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968380551
