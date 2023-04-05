@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraMover : MonoBehaviour
@@ -15,7 +14,7 @@ public class CameraMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cam.orthographicSize = 25f;
+        Cam.orthographicSize = 33f;
         camLocation.transform.position = mainRoom.transform.position;
     }
 
@@ -29,26 +28,26 @@ public class CameraMover : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && this.gameObject.name == "LeftEnterDoor")
         {
-            Cam.orthographicSize = 19f;
+            Cam.orthographicSize = 25f;
             camLocation.transform.position = leftRoom.transform.position;
         }
 
         if (collision.gameObject.tag == "Player" && this.gameObject.tag == "ExitDoor")
         {
-            Cam.orthographicSize = 25f;
+            Cam.orthographicSize = 33f;
             camLocation.transform.position = mainRoom.transform.position;
         }
 
         if (collision.gameObject.tag == "Player" && this.gameObject.name == "TopEnterDoor")
         {
-            Cam.orthographicSize = 25f;
+            Cam.orthographicSize = 33f;
             camLocation.transform.position = topRoom.transform.position;
         }
 
         if (collision.gameObject.tag == "Player" && this.gameObject.name == "RightEnterDoor")
         {
-            Cam.orthographicSize = 19f;
-            camLocation.transform.position = leftRoom.transform.position;
+            Cam.orthographicSize = 30f;
+            camLocation.transform.position = rightRoom.transform.position;
         }
     }
 }
